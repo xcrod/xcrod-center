@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.9.RELEASE</version>
+    </parent>
+
+
+    <groupId>com.xcrod</groupId>
+    <artifactId>xcrod-center</artifactId>
+    <version>1.0</version>
+
+    <modules>
+        <module>xcrod-utils</module>
+    </modules>
+    <packaging>pom</packaging>
+
+
+    <developers>
+        <developer>
+            <id>Wang</id>
+            <name>Wang Chao</name>
+            <email>357589165@163.com</email>
+            <roles>
+                <role>Project Leader</role>
+            </roles>
+        </developer>
+    </developers>
+
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://repo.rdc.aliyun.com/repository/84347-release-qsoFaY/</url>
+        </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <url>https://repo.rdc.aliyun.com/repository/84347-snapshot-CitrDW/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>
