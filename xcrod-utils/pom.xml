@@ -15,6 +15,7 @@
 
     <modules>
         <module>xcrod-utils-wechat-pay-starter</module>
+        <module>xcrod-utils-wechat-mp-center</module>
     </modules>
 
 
@@ -49,6 +50,12 @@
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator-annotation-processor</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

@@ -3,15 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.xcrod.utils</groupId>
-        <artifactId>xcrod-utils</artifactId>
+        <artifactId>xcrod-center</artifactId>
+        <groupId>com.xcrod</groupId>
         <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <version>1.0.0.RELEASE</version>
-    <packaging>jar</packaging>
 
-    <artifactId>xcrod-utils-wechat-pay-starter</artifactId>
+    <version>1.0.0.RELEASE</version>
+    <artifactId>xcrod-api</artifactId>
 
 
 </project>

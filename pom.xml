@@ -18,6 +18,7 @@
 
     <modules>
         <module>xcrod-utils</module>
+        <module>xcrod-api</module>
     </modules>
     <packaging>pom</packaging>
 
