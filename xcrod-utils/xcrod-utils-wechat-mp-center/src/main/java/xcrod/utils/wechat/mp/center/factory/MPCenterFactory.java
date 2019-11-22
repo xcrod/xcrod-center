@@ -12,7 +12,6 @@ import xcrod.utils.wechat.mp.center.api.AccessTokenProcessor;
 import xcrod.utils.wechat.mp.center.properties.MPCenterProperties;
 
 import javax.annotation.PostConstruct;
-import java.io.IOException;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,10 +25,8 @@ import java.util.TimerTask;
 @Slf4j
 public class MPCenterFactory {
 
-    @Autowired
-    AccessTokenProcessor accessTokenProcessor;
-    @Autowired
-    MPCenterProperties mpCenterProperties;
+    private AccessTokenProcessor accessTokenProcessor;
+    private MPCenterProperties mpCenterProperties;
 
     public MPCenterFactory(AccessTokenProcessor accessTokenProcessor, MPCenterProperties mpCenterProperties) {
         this.accessTokenProcessor = accessTokenProcessor;
@@ -73,7 +70,7 @@ public class MPCenterFactory {
     }
 
 
-    public void getAccessToken() throws Exception {
+    private void getAccessToken() throws Exception {
         HttpConnectUtil.Entry entry = accessTokenProcessor.getAccessToken(mpCenterProperties.getAppid(), mpCenterProperties.getAppSecret());
         if (entry.getResponseCode() == 200) {
             JSONObject jo = JSON.parseObject(entry.getBody());
