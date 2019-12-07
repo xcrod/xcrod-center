@@ -21,7 +21,6 @@
         <dependency>
             <groupId>com.xcrod</groupId>
             <artifactId>xcrod-api</artifactId>
-            <version>1.0.0.RELEASE</version>
         </dependency>
     </dependencies>
 
