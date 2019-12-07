@@ -21,71 +21,64 @@ public class HttpConnectUtil {
     public static Entry get(final String address) throws IOException {
         return get(address, null);
     }
+
     public static Entry get(final String address, final Map<String, String> headers) throws IOException {
-
-        HttpURLConnection connection;
-
-
-        URL url = new URL(address);
-        connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
-        connection.setRequestProperty("Accept", "*/*");
-        if (headers != null)
-            headers.forEach(connection::setRequestProperty);
-
-
-
-        return formatResponseMessage(connection);
+        final String method = "GET";
+        return formatResponseMessage(address, method, headers, null);
     }
 
     public static Entry post(final String address, final String data) throws IOException {
         return post(address, data, null);
     }
+
     public static Entry post(final String address, final String data, final Map<String, String> headers) throws IOException {
-
-        HttpURLConnection connection;
-
-        URL url = new URL(address);
-        connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Accept", "*/*");
-        if (headers != null)
-            headers.forEach(connection::setRequestProperty);
-
-
-        if (data != null) {
-            connection.setDoInput(true);
-            connection.setDoOutput(true);
-            connection.getOutputStream().write(data.getBytes(StandardCharsets.UTF_8));
-        }
-
-
-        return formatResponseMessage(connection);
+        final String method = "POST";
+        return formatResponseMessage(address, method, headers, data);
     }
 
 
-    private static Entry formatResponseMessage(HttpURLConnection connection) throws IOException {
-        StringBuilder stringBuilder = new StringBuilder();
-        BufferedReader bufferedReader;
-        InputStream inputStream;
+    private static Entry formatResponseMessage(final String address,
+                                               final String method,
+                                               final Map<String, String> headers,
+                                               final String data) throws IOException {
 
-        int responseCode = connection.getResponseCode();
-        inputStream = (responseCode >= 400)
-                ? connection.getErrorStream()
-                : connection.getInputStream();
+        HttpURLConnection connection = null;
+        BufferedReader bufferedReader = null;
+        InputStream inputStream = null;
+        try {
+            URL url = new URL(address);
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod(method);
+            connection.setRequestProperty("Accept", "*/*");
+            if (headers != null)
+                headers.forEach(connection::setRequestProperty);
 
-        bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-        String line;
-        while ((line = bufferedReader.readLine()) != null) {
-            stringBuilder.append(line);
+            if (data != null) {
+                connection.setDoInput(true);
+                connection.setDoOutput(true);
+                connection.getOutputStream().write(data.getBytes(StandardCharsets.UTF_8));
+            }
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            int responseCode = connection.getResponseCode();
+            inputStream = (responseCode != 200)
+                    ? connection.getErrorStream()
+                    : connection.getInputStream();
+
+            bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+
+            return new Entry(stringBuilder.toString(), responseCode);
+        } finally {
+            if (bufferedReader != null) bufferedReader.close();
+            if (inputStream != null) inputStream.close();
+            if (connection != null) connection.disconnect();
         }
-        inputStream.close();
-        connection.disconnect();
-
-
-        return new Entry(stringBuilder.toString(), responseCode);
     }
-
 
 
     @Getter
