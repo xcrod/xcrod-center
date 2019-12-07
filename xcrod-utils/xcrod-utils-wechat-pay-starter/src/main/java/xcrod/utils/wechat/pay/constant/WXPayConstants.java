@@ -2,7 +2,6 @@ package xcrod.utils.wechat.pay.constant;
 
 /**
  * @author 王超
- * @company 上海龟元数据科技有限公司
  * @create 2019-10-12 10:26
  */
 public class WXPayConstants {

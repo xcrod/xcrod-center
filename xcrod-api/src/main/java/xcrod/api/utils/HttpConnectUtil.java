@@ -13,11 +13,9 @@ import java.util.Map;
 
 /**
  * @author 王超
- * @company 上海龟元数据科技有限公司
  * @create 2019-10-12 15:15
  */
 public class HttpConnectUtil {
-
 
 
     public static Entry get(final String address) throws IOException {
@@ -71,7 +69,7 @@ public class HttpConnectUtil {
         BufferedReader bufferedReader;
         InputStream inputStream;
 
-        Integer responseCode = connection.getResponseCode();
+        int responseCode = connection.getResponseCode();
         inputStream = (responseCode >= 400)
                 ? connection.getErrorStream()
                 : connection.getInputStream();
@@ -92,8 +90,8 @@ public class HttpConnectUtil {
 
     @Getter
     public static class Entry {
-        private String body;
-        private Integer responseCode;
+        private final String body;
+        private final Integer responseCode;
 
         Entry(String body, Integer responseCode) {
             this.body = body;

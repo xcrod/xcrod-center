@@ -8,7 +8,6 @@ import xcrod.utils.wechat.pay.request.WXPayRequest;
  * 微信支付 - 微信小程序支付创建工厂
  *
  * @author 王超
- * @company 上海龟元数据科技有限公司
  * @create 2019-10-11 15:14
  */
 public class WXPayMiniAppFactory extends AbstractWXPayFactory {

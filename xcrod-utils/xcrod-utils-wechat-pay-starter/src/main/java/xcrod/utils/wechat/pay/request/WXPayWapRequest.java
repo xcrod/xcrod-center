@@ -9,7 +9,6 @@ import xcrod.utils.wechat.pay.util.WXHttpConnectUtil;
 
 /**
  * @author 王超
- * @company 上海龟元数据科技有限公司
  * @create 2019-10-12 10:38
  */
 public class WXPayWapRequest extends AbstractWXPayRequest {

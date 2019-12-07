@@ -17,7 +17,6 @@ import static xcrod.utils.wechat.pay.constant.WXPayConstants.FIELD_SIGN_TYPE;
 
 /**
  * @author 王超
- * @company 上海龟元数据科技有限公司
  * @create 2019-10-12 10:38
  */
 @Slf4j

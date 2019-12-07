@@ -22,7 +22,6 @@ import java.util.Map;
 
 /**
  * @author 王超
- * @company 上海龟元数据科技有限公司
  * @create 2019-10-15 10:04
  */
 public class XmlUtil {

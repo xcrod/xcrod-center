@@ -12,7 +12,6 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * @author 王超
- * @company 上海龟元数据科技有限公司
  * @create 2019-10-12 15:15
  */
 public class WXHttpConnectUtil {
